@@ -1,16 +1,68 @@
-# tourch_app
+# 🔦 Torch by Sachin96boy
 
-A new Flutter project.
+**Torch by Sachin96boy** is a beautifully designed and responsive Flutter flashlight app with dark-themed aesthetics and a glowing bulb UI. It includes advanced features like shake-to-toggle, multiple light modes, and an intuitive tab navigation for a seamless user experience.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🌕 **Flashlight Toggle** – Instantly turn your device's flashlight on or off.
+- 📳 **Shake to Turn On/Off** – Hands-free control using your phone's motion sensors.
+- 🧭 **Tabbed Interface** – Includes:
+  - S.O.S Signal
+  - Flashlight (Main)
+  - Dim Light
+  - Sunset Mode
+- 🌙 **Dark Theme** – Elegant and minimal UI with a glowing central bulb.
+- ⚙️ **Settings & Extras** – Easily accessible from the top controls.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Getting Started
+
+To build and run this app on your local machine:
+
+```bash
+git clone <this-repo-url>  # Repo is private / internal
+cd torch_app
+flutter pub get
+flutter run
+```
+
+_Note: Please ensure your device has a flashlight hardware component._
+
+---
+
+## 📦 Tech Stack
+
+- **Flutter** – Cross-platform UI toolkit
+- **Dart** – Programming language
+- **Sensors Plus** – For detecting shake motion
+- **Flutter RiverPod** – (Depending on your state management, customize this)
+
+---
+
+## 🔒 License
+
+This project is **not open source** and is protected under the following license:
+
+```
+Torch by Sachin96boy License
+
+All rights reserved. This software and associated materials are the intellectual property of Sachin96boy.
+
+You may not copy, modify, distribute, sublicense, or reverse engineer any part of this project without explicit written permission from the author.
+
+Unauthorized use is strictly prohibited and may result in legal consequences.
+
+Contact: sachin96boy.dev
+```
+
+---
+
+## 🙌 Credits
+
+Made with ❤️ by [Sachin96boy](https://sachin96boy.dev)
+
+
+
