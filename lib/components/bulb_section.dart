@@ -7,16 +7,21 @@ class BulbSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    double scHight = MediaQuery.of(context).size.height;
     return Center(
       child: Stack(
         alignment: Alignment.center,
         children: [
-          AnimatedDots(),
-          Image.asset('assets/buld_on.png', height: 150),
           Positioned(
             top: 0,
-            child: Container(width: 2, height: 100, color: Colors.black),
+            child: Container(
+              width: 2,
+              height: scHight * 0.3,
+              color: Colors.white,
+            ),
           ),
+          Image.asset('assets/bulbs/bulb_on.png', height: 150),
+          AnimatedDots(),
         ],
       ),
     );

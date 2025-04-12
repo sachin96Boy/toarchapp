@@ -43,12 +43,31 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
     return AnimatedBuilder(
       animation: _animation,
       builder: (context, child) {
-        return CustomPaint(
-          painter: DotsPainter(
-            animationValue: _animation.value,
-            dotCount: dotCount,
-          ),
-          size: Size(200, 200),
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            CustomPaint(
+              painter: DotsPainter(
+                animationValue: _animation.value,
+                dotCount: dotCount,
+              ),
+              size: Size(200, 200),
+            ),
+            CustomPaint(
+              painter: DotsPainter(
+                animationValue: _animation.value,
+                dotCount: dotCount,
+              ),
+              size: Size(300, 300),
+            ),
+            CustomPaint(
+              painter: DotsPainter(
+                animationValue: _animation.value,
+                dotCount: dotCount,
+              ),
+              size: Size(400, 400),
+            ),
+          ],
         );
       },
     );

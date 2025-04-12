@@ -22,7 +22,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             TopBar(),
             Expanded(child: BulbSection()),
             CustomSwitch(),
-            BottomAppBar(),
+            // BottomAppBar(),
           ],
         ),
       ),
