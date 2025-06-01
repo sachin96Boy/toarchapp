@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 class DotsPainter extends CustomPainter {
   final double animationValue;
   final int dotCount;
+  final Color color;
 
-  DotsPainter({required this.animationValue, required this.dotCount});
+  DotsPainter({
+    required this.animationValue,
+    required this.dotCount,
+    required this.color,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -14,7 +19,7 @@ class DotsPainter extends CustomPainter {
     final radius = size.width / 2;
     final Paint paint =
         Paint()
-          ..color = Colors.orangeAccent.withOpacity(animationValue)
+          ..color = color.withOpacity(0.5 * animationValue)
           ..style = PaintingStyle.fill;
 
     for (int i = 0; i < dotCount; i++) {
