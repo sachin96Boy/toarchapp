@@ -68,14 +68,8 @@ class TorchNotifier extends Notifier<TorchModel> {
         break;
     }
   }
-
-  Future<void> shakeToToggle() async {
-    if (!state.isFlashlightSupported) {
-      return;
-    }
-
-    // Implement shake to toggle logic
-    // This is a placeholder for the actual implementation
-    await toggleFlashlight();
-  }
 }
+
+final torchProvider = NotifierProvider<TorchNotifier, TorchModel>(
+  () => TorchNotifier(),
+);

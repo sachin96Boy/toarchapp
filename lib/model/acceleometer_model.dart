@@ -25,14 +25,12 @@ class AccecelorometerModel {
 }
 
 class ShakeModelData {
-  final AccecelorometerModel accecelorometerModel;
   final int shakeCount;
   final DateTime? lastShakeTime;
   final Timer? shakeTimer;
   final bool isCooldownActive;
 
   ShakeModelData({
-    required this.accecelorometerModel,
     required this.shakeCount,
     required this.lastShakeTime,
     required this.shakeTimer,
@@ -40,14 +38,12 @@ class ShakeModelData {
   });
 
   ShakeModelData copyWith({
-    AccecelorometerModel? accecelorometerModel,
     int? shakeCount,
     DateTime? lastShakeTime,
     Timer? shakeTimer,
     bool? isCooldownActive,
   }) {
     return ShakeModelData(
-      accecelorometerModel: accecelorometerModel ?? this.accecelorometerModel,
       shakeCount: shakeCount ?? this.shakeCount,
       lastShakeTime: lastShakeTime ?? this.lastShakeTime,
       shakeTimer: shakeTimer ?? this.shakeTimer,
