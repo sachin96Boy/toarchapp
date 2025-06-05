@@ -39,6 +39,8 @@ dependencies:
   riverpod_annotation: ^2.6.1
   torch_light: ^1.1.0
   sensors_plus: ^6.1.1
+  flutter_native_splash: ^2.4.6
+  flutter_launcher_icons: ^0.14.3
 
 dev_dependencies:
   flutter_test:
@@ -68,7 +70,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/bulbs/
-  #   - images/a_dot_ham.jpeg
+    - assets/logo/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -95,3 +97,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter_native_splash:
+    color: "#000000"
+    image: assets/logo/logo-with-slogan.png
+    android_12:
+      image: assets/logo/logo-with-slogan.png
+      color: "#000000"
