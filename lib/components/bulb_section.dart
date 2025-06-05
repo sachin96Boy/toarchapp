@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tourch_app/components/bulboverlay/animated_dots.dart';
+import 'package:tourch_app/constants/app_constants.dart';
+import 'package:tourch_app/model/torch_model.dart';
+import 'package:tourch_app/providers/torch_provider.dart';
 
 class BulbSection extends ConsumerWidget {
   const BulbSection({super.key});
@@ -8,6 +11,9 @@ class BulbSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     double scHight = MediaQuery.of(context).size.height;
+
+    final torch = ref.watch(torchProvider);
+
     return Center(
       child: Stack(
         alignment: Alignment.center,
@@ -20,7 +26,12 @@ class BulbSection extends ConsumerWidget {
               color: Colors.white,
             ),
           ),
-          Image.asset('assets/bulbs/bulb_on.png', height: 150),
+          Image.asset(
+            torch.flashLightState == FlashLightState.on
+                ? AppConstants.bulbOnPath
+                : AppConstants.bulbOffPath,
+            height: 150,
+          ),
           AnimatedDots(),
         ],
       ),

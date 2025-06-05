@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tourch_app/components/bulboverlay/dots_painter.dart';
+import 'package:tourch_app/model/torch_model.dart';
+import 'package:tourch_app/providers/torch_provider.dart';
 
 class AnimatedDots extends ConsumerStatefulWidget {
   const AnimatedDots({super.key});
@@ -40,6 +42,8 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
 
   @override
   Widget build(BuildContext context) {
+    final torch = ref.watch(torchProvider);
+
     return AnimatedBuilder(
       animation: _animation,
       builder: (context, child) {
@@ -50,6 +54,10 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
               painter: DotsPainter(
                 animationValue: _animation.value,
                 dotCount: dotCount,
+                color:
+                    torch.flashLightState == FlashLightState.on
+                        ? Colors.orangeAccent
+                        : Colors.grey,
               ),
               size: Size(200, 200),
             ),
@@ -57,6 +65,10 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
               painter: DotsPainter(
                 animationValue: _animation.value,
                 dotCount: dotCount,
+                color:
+                    torch.flashLightState == FlashLightState.on
+                        ? Colors.orangeAccent
+                        : Colors.grey,
               ),
               size: Size(300, 300),
             ),
@@ -64,6 +76,10 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
               painter: DotsPainter(
                 animationValue: _animation.value,
                 dotCount: dotCount,
+                color:
+                    torch.flashLightState == FlashLightState.on
+                        ? Colors.orangeAccent
+                        : Colors.grey,
               ),
               size: Size(400, 400),
             ),

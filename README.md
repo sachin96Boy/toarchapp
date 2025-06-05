@@ -23,7 +23,7 @@
 To build and run this app on your local machine:
 
 ```bash
-git clone <this-repo-url>  # Repo is private / internal
+git clone <[this-repo-url](https://github.com/sachin96Boy/toarchapp.git)>  # Repo is private / internal
 cd torch_app
 flutter pub get
 flutter run

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tourch_app/model/torch_model.dart';
+import 'package:tourch_app/providers/torch_provider.dart';
 
 class CustomSwitch extends ConsumerStatefulWidget {
   const CustomSwitch({super.key});
@@ -11,8 +13,14 @@ class CustomSwitch extends ConsumerStatefulWidget {
 class _CustomSwitchState extends ConsumerState<CustomSwitch> {
   bool light = true;
 
+  void handleButtonToggle() {
+    ref.read(torchProvider.notifier).toggleFlashlight();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final torch = ref.watch(torchProvider);
+
     final WidgetStateProperty<Color?> overlayColor =
         WidgetStateProperty<Color?>.fromMap(<WidgetState, Color>{
           WidgetState.selected: Colors.amber.withOpacity(0.54),
@@ -32,14 +40,12 @@ class _CustomSwitchState extends ConsumerState<CustomSwitch> {
           Text("Shake", style: TextStyle(color: Colors.orange, fontSize: 16)),
           SizedBox(width: 8),
           Switch(
-            value: light,
+            value: torch.flashLightState == FlashLightState.on ? true : false,
             overlayColor: overlayColor,
             trackColor: trackColor,
             thumbColor: const WidgetStatePropertyAll<Color>(Colors.white),
-            onChanged: (value) {
-              setState(() {
-                light = value;
-              });
+            onChanged: (_) {
+              handleButtonToggle();
             },
           ),
         ],
