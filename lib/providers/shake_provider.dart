@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tourch_app/model/acceleometer_model.dart';
 
@@ -7,6 +9,8 @@ import 'package:tourch_app/providers/torch_provider.dart';
 class ShakeNoifier extends Notifier<ShakeModelData> {
   @override
   ShakeModelData build() {
+    startListening();
+
     // TODO: implement build
     return ShakeModelData(
       shakeCount: 0,
@@ -53,6 +57,11 @@ class ShakeNoifier extends Notifier<ShakeModelData> {
       );
       // Trigger flashlight toggle or any other action
       ref.read(torchProvider.notifier).toggleFlashlight();
+
+      // Optional: cooldown for X seconds
+      Future.delayed(const Duration(seconds: 1), () {
+        state = state.copyWith(isCooldownActive: false);
+      });
     } else {
       state = state.copyWith(
         shakeCount: 0,
@@ -66,15 +75,8 @@ class ShakeNoifier extends Notifier<ShakeModelData> {
     getaccecelorometerStream().listen((accecelorometerModel) {
       final acceleration = calculateAcceleration(accecelorometerModel);
 
-      if (acceleration > 15 && !state.isCooldownActive) {
+      if (acceleration > 2 && !state.isCooldownActive) {
         // Adjust threshold as needed
-
-        final currentTime = DateTime.now();
-        if (state.lastShakeTime != null &&
-            currentTime.difference(state.lastShakeTime!).inSeconds < 2) {
-          return; // Ignore if the last shake was too recent
-        }
-
         handleShake();
       }
     });
@@ -84,3 +86,83 @@ class ShakeNoifier extends Notifier<ShakeModelData> {
 final shakeProvider = NotifierProvider<ShakeNoifier, ShakeModelData>(
   () => ShakeNoifier(),
 );
+
+// import 'dart:async';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:tourch_app/model/acceleometer_model.dart';
+// import 'package:sensors_plus/sensors_plus.dart';
+// import 'package:tourch_app/providers/torch_provider.dart';
+
+// class ShakeNoifier extends Notifier<ShakeModelData> {
+//   StreamSubscription<AccelerometerEvent>? _subscription;
+
+//   @override
+//   ShakeModelData build() {
+//     // Start listening as soon as the provider is built
+//     _startListening();
+//     return ShakeModelData(
+//       shakeCount: 0,
+//       lastShakeTime: null,
+//       shakeTimer: null,
+//       isCooldownActive: false,
+//     );
+//   }
+
+//   void dispose() {
+//     _subscription?.cancel();
+//   }
+
+//   double _calculateAcceleration(AccelerometerEvent event) {
+//     return (event.x * event.x + event.y * event.y + event.z * event.z) /
+//         (9.8 * 9.8);
+//   }
+
+//   void _handleShake() {
+//     final currentTime = DateTime.now();
+//     final timeSinceLastShake = currentTime.difference(
+//       state.lastShakeTime ?? DateTime.fromMillisecondsSinceEpoch(0),
+//     );
+
+//     if (state.isCooldownActive || timeSinceLastShake.inSeconds < 2) {
+//       return;
+//     }
+
+//     final newShakeCount = state.shakeCount + 1;
+
+//     print('Shake detected: $newShakeCount');
+
+//     if (newShakeCount == 1) {
+//       state = state.copyWith(
+//         shakeCount: newShakeCount,
+//         lastShakeTime: currentTime,
+//       );
+//     } else if (newShakeCount == 2) {
+//       state = state.copyWith(
+//         shakeCount: 0, // reset after 2
+//         lastShakeTime: currentTime,
+//         isCooldownActive: true,
+//       );
+
+//       ref.read(torchProvider.notifier).toggleFlashlight();
+
+//       // Optional: cooldown for X seconds
+//       Future.delayed(Duration(seconds: 2), () {
+//         state = state.copyWith(isCooldownActive: false);
+//       });
+//     }
+//   }
+
+//   void _startListening() {
+//     _subscription = accelerometerEventStream().listen((event) {
+//       final acceleration = _calculateAcceleration(event);
+
+//       if (acceleration > 15 && !state.isCooldownActive) {
+//         _handleShake();
+//       }
+//     });
+//   }
+// }
+
+// final shakeProvider = NotifierProvider<ShakeNoifier, ShakeModelData>(
+//   () => ShakeNoifier(),
+// );

@@ -20,7 +20,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     super.initState();
 
     ref.read(torchProvider.notifier).checkFlashlightSupported();
-    ref.read(shakeProvider.notifier).startListening();
   }
 
   @override
@@ -35,6 +34,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         );
       }
     });
+
+    ref.watch(shakeProvider);
 
     return Scaffold(
       backgroundColor: Colors.black,
