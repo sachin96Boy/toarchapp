@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tourch_app/components/bulb_section.dart';
 import 'package:tourch_app/components/custom_switch.dart';
 import 'package:tourch_app/components/topbar.dart';
+import 'package:tourch_app/providers/shake_provider.dart';
 import 'package:tourch_app/providers/torch_provider.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -19,6 +20,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     super.initState();
 
     ref.read(torchProvider.notifier).checkFlashlightSupported();
+    ref.read(shakeProvider.notifier).startListening();
   }
 
   @override
