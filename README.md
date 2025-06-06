@@ -23,7 +23,7 @@
 To build and run this app on your local machine:
 
 ```bash
-git clone <[this-repo-url](https://github.com/sachin96Boy/toarchapp.git)>  # Repo is private / internal
+git clone https://github.com/sachin96Boy/toarchapp.git)
 cd torch_app
 flutter pub get
 flutter run
@@ -38,7 +38,7 @@ _Note: Please ensure your device has a flashlight hardware component._
 - **Flutter** – Cross-platform UI toolkit
 - **Dart** – Programming language
 - **Sensors Plus** – For detecting shake motion
-- **Flutter RiverPod** – (Depending on your state management, customize this)
+- **Flutter RiverPod** – State management solution
 
 ---
 
@@ -63,6 +63,3 @@ Contact: sachin96boy.dev
 ## 🙌 Credits
 
 Made with ❤️ by [Sachin96boy](https://sachin96boy.dev)
-
-
-
