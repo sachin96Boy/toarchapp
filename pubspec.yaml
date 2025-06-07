@@ -1,5 +1,5 @@
 name: tourch_app
-description: "A new Flutter project."
+description: "Torch by Sachin96boy is a beautifully designed Flutter flashlight app with shake-to-toggle, dark theme, glowing UI, and multiple light modes like S.O.S, Dim, and Sunset."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
