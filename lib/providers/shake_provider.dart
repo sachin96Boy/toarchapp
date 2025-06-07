@@ -5,6 +5,7 @@ import 'package:tourch_app/model/acceleometer_model.dart';
 
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:tourch_app/providers/torch_provider.dart';
+import 'package:vibration/vibration.dart';
 
 class ShakeNoifier extends Notifier<ShakeModelData> {
   @override
@@ -31,13 +32,13 @@ class ShakeNoifier extends Notifier<ShakeModelData> {
         (9.8 * 9.8);
   }
 
-  void handleShake() {
+  Future<void> handleShake() async {
     final currentTime = DateTime.now();
     final timeSinceLastShake = currentTime.difference(
       state.lastShakeTime ?? DateTime.fromMillisecondsSinceEpoch(0),
     );
 
-    if (state.isCooldownActive || timeSinceLastShake.inSeconds < 2) {
+    if (state.isCooldownActive || timeSinceLastShake.inSeconds < 1) {
       return; // Ignore shake if cooldown is active or not enough time has passed
     }
 
@@ -55,6 +56,11 @@ class ShakeNoifier extends Notifier<ShakeModelData> {
         lastShakeTime: currentTime,
         isCooldownActive: true,
       );
+
+      if (await Vibration.hasVibrator() &&
+          await Vibration.hasCustomVibrationsSupport()) {
+        Vibration.vibrate(duration: 1000);
+      }
       // Trigger flashlight toggle or any other action
       ref.read(torchProvider.notifier).toggleFlashlight();
 

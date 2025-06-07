@@ -4,6 +4,7 @@ import 'package:tourch_app/components/bulboverlay/animated_dots.dart';
 import 'package:tourch_app/constants/app_constants.dart';
 import 'package:tourch_app/model/torch_model.dart';
 import 'package:tourch_app/providers/torch_provider.dart';
+import 'package:tourch_app/utils/util_funcs.dart';
 
 class BulbSection extends ConsumerWidget {
   const BulbSection({super.key});
@@ -22,14 +23,21 @@ class BulbSection extends ConsumerWidget {
             top: 0,
             child: Container(
               width: 2,
-              height: scHight * 0.3,
+              height: scHight * 0.23,
               color: Colors.white,
             ),
           ),
           Image.asset(
-            torch.flashLightState == FlashLightState.on
-                ? AppConstants.bulbOnPath
-                : AppConstants.bulbOffPath,
+            AppConstants.bulbOffPath,
+            color: handleItemColorByColorMode(torch.colorMode),
+            opacity:
+                torch.flashLightState == FlashLightState.off
+                    ? const AlwaysStoppedAnimation(0.5)
+                    : const AlwaysStoppedAnimation(1.0),
+            colorBlendMode: handleBlendModeByColorMode(
+              torch.colorMode,
+              torch.flashLightState,
+            ),
             height: 150,
           ),
           AnimatedDots(),

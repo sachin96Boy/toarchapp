@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.tourch_app"
-    compileSdk = 34
+    compileSdk = 35
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tourch_app/components/bulboverlay/dots_painter.dart';
 import 'package:tourch_app/model/torch_model.dart';
 import 'package:tourch_app/providers/torch_provider.dart';
+import 'package:tourch_app/utils/util_funcs.dart';
 
 class AnimatedDots extends ConsumerStatefulWidget {
   const AnimatedDots({super.key});
@@ -51,34 +52,45 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
           alignment: Alignment.center,
           children: [
             CustomPaint(
+              willChange: true,
               painter: DotsPainter(
                 animationValue: _animation.value,
                 dotCount: dotCount,
                 color:
                     torch.flashLightState == FlashLightState.on
-                        ? Colors.orangeAccent
+                        ? handleItemColorByColorMode(torch.colorMode)
                         : Colors.grey,
               ),
               size: Size(200, 200),
             ),
             CustomPaint(
+              willChange: true,
               painter: DotsPainter(
                 animationValue: _animation.value,
                 dotCount: dotCount,
                 color:
                     torch.flashLightState == FlashLightState.on
-                        ? Colors.orangeAccent
+                        ? handleItemColorByColorMode(torch.colorMode)
                         : Colors.grey,
               ),
               size: Size(300, 300),
             ),
             CustomPaint(
+              willChange: true,
+              foregroundPainter: DotsPainter(
+                animationValue: _animation.value,
+                dotCount: dotCount,
+                color:
+                    torch.flashLightState == FlashLightState.on
+                        ? handleItemColorByColorMode(torch.colorMode)
+                        : Colors.grey,
+              ),
               painter: DotsPainter(
                 animationValue: _animation.value,
                 dotCount: dotCount,
                 color:
                     torch.flashLightState == FlashLightState.on
-                        ? Colors.orangeAccent
+                        ? handleItemColorByColorMode(torch.colorMode)
                         : Colors.grey,
               ),
               size: Size(400, 400),

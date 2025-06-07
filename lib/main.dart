@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:tourch_app/pages/get_started_screen.dart';
 import 'package:tourch_app/pages/home_screen.dart';
 import 'package:tourch_app/styles/app_theme.dart';
 
@@ -15,12 +17,21 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeProvider);
 
-    return MaterialApp(
-      title: 'Flashlight by Sachin',
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      themeMode: themeMode,
-      home: HomeScreen(),
+    return ShadApp.custom(
+      appBuilder: (context, theme) {
+        return MaterialApp(
+          title: 'Flashlight by Sachin',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
+          themeMode: themeMode,
+          home: HomeScreen(),
+          routes: {'/guide': (context) => const GetStartedScreen()},
+          builder: (context, child) {
+            return child!;
+          },
+        );
+      },
     );
   }
 }

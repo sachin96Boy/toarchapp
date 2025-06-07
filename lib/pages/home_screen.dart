@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tourch_app/components/bottom_batbar.dart';
 import 'package:tourch_app/components/bulb_section.dart';
 import 'package:tourch_app/components/custom_switch.dart';
 import 'package:tourch_app/components/topbar.dart';
 import 'package:tourch_app/providers/shake_provider.dart';
 import 'package:tourch_app/providers/torch_provider.dart';
+import 'package:tourch_app/utils/util_funcs.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -37,18 +39,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     ref.watch(shakeProvider);
 
+    final torch = ref.watch(torchProvider);
+
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: handleBgColorByColorMode(torch.colorMode),
       body: SafeArea(
         child: Column(
-          children: [
-            TopBar(),
-            Expanded(child: BulbSection()),
-            CustomSwitch(),
-            // BottomAppBar(),
-          ],
+          children: [TopBar(), Expanded(child: BulbSection()), CustomSwitch()],
         ),
       ),
+      bottomNavigationBar: const BottomTabBar(),
     );
   }
 }
