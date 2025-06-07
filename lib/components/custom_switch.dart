@@ -13,7 +13,7 @@ class CustomSwitch extends ConsumerStatefulWidget {
 
 class _CustomSwitchState extends ConsumerState<CustomSwitch> {
   void handleButtonToggle() {
-    ref.read(torchProvider.notifier).toggleFlashlight();
+    ref.read(torchProvider.notifier).handleFlashlightBasedOnLightMode();
   }
 
   @override
