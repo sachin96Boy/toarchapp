@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tourch_app/components/bulboverlay/dots_painter.dart';
 import 'package:tourch_app/model/torch_model.dart';
 import 'package:tourch_app/providers/torch_provider.dart';
+import 'package:tourch_app/utils/util_funcs.dart';
 
 class AnimatedDots extends ConsumerStatefulWidget {
   const AnimatedDots({super.key});
@@ -56,7 +57,7 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
                 dotCount: dotCount,
                 color:
                     torch.flashLightState == FlashLightState.on
-                        ? Colors.orangeAccent
+                        ? handleItemColorByColorMode(torch.colorMode)
                         : Colors.grey,
               ),
               size: Size(200, 200),
@@ -67,7 +68,7 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
                 dotCount: dotCount,
                 color:
                     torch.flashLightState == FlashLightState.on
-                        ? Colors.orangeAccent
+                        ? handleItemColorByColorMode(torch.colorMode)
                         : Colors.grey,
               ),
               size: Size(300, 300),
@@ -78,7 +79,7 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
                 dotCount: dotCount,
                 color:
                     torch.flashLightState == FlashLightState.on
-                        ? Colors.orangeAccent
+                        ? handleItemColorByColorMode(torch.colorMode)
                         : Colors.grey,
               ),
               size: Size(400, 400),

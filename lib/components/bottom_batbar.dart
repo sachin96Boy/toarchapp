@@ -13,21 +13,43 @@ class _BottomTabBarState extends ConsumerState<BottomTabBar> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TabBar(
-            indicatorColor: Colors.orangeAccent,
-            labelColor: Colors.white,
-            unselectedLabelColor: Colors.white70,
-            tabs: [
-              Tab(text: "S.O.S Signal"),
-              Tab(text: "Flashlight"),
-              Tab(text: "Dim Light"),
-              Tab(text: "Sunset"),
-            ],
-          ),
-        ],
+      initialIndex: 1,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: TabBar(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
+                labelColor: Colors.white,
+                unselectedLabelColor: Colors.grey.withOpacity(0.5),
+                tabAlignment: TabAlignment.center,
+                isScrollable: true,
+                indicatorColor: Colors.orangeAccent,
+                indicatorWeight: 2.0,
+                indicatorSize: TabBarIndicatorSize.tab,
+                labelStyle: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+                unselectedLabelStyle: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.normal,
+                ),
+                onTap: (index) {
+                  // Handle tab change if needed
+                },
+
+                tabs: [
+                  Tab(text: "S.O.S Signal"),
+                  Tab(text: "Flashlight"),
+                  Tab(text: "Dim Light"),
+                  Tab(text: "Sunset"),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

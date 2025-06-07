@@ -10,6 +10,7 @@ class TorchNotifier extends Notifier<TorchModel> {
       isFlashlightSupported: false,
       errorMessage: '',
       lightMode: LightMode.flashlight,
+      colorMode: ColorMode.base,
     );
   }
 
@@ -105,6 +106,14 @@ class TorchNotifier extends Notifier<TorchModel> {
         // Implement sunset logic
         break;
     }
+  }
+
+  Future<void> setColorMode(ColorMode mode) async {
+    if (!state.isFlashlightSupported) {
+      return;
+    }
+
+    state = state.copyWith(colorMode: mode);
   }
 }
 
