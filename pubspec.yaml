@@ -41,6 +41,7 @@ dependencies:
   sensors_plus: ^6.1.1
   flutter_native_splash: ^2.4.6
   flutter_launcher_icons: ^0.14.3
+  vibration: ^3.1.3
 
 dev_dependencies:
   flutter_test:
@@ -102,5 +103,5 @@ flutter_native_splash:
   color: "#000000"
   image: assets/logo/logo-with-slogan.png
   android_12:
-    image: assets/logo/logo-with-slogan.png
-    color: "#000000"
+    # image: assets/logo/logo-with-slogan.png
+    # color: "#000000"

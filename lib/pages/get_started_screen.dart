@@ -37,17 +37,18 @@ class _GetStartedScreenState extends ConsumerState<GetStartedScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                '🔦 Torch by Sachin96boy',
-                style: TextStyle(
-                  fontSize: 22,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+              SizedBox(height: 24),
+
+              Image.asset(
+                AppConstants.appLogoWithSlogan,
+                fit: BoxFit.cover,
+                width: 200,
+                height: 200,
               ),
+
               SizedBox(height: 12),
               Text(
-                'Torch is a beautifully designed and responsive flashlight app with dark-themed aesthetics and a glowing bulb UI. It’s crafted for a seamless and intuitive user experience.',
+                'FlashLightApp is a beautifully designed and responsive  app with dark-themed aesthetics and a glowing bulb UI. It’s crafted for a seamless and intuitive user experience.',
                 style: TextStyle(fontSize: 16, color: Colors.white70),
               ),
               SizedBox(height: 24),
@@ -136,7 +137,7 @@ class _GetStartedScreenState extends ConsumerState<GetStartedScreen> {
               ),
               SizedBox(height: 24),
               Text(
-                'Thank you for using Torch!',
+                'Thank you for using Our App!',
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.white70,

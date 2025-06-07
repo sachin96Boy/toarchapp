@@ -39,15 +39,18 @@ class TorchNotifier extends Notifier<TorchModel> {
     switch (state.lightMode) {
       case LightMode.sos:
         // Handle SOS mode logic here
+        await toggleSosLight();
         break;
       case LightMode.flashlight:
         await toggleFlashlight();
         break;
       case LightMode.dimlight:
         // Handle dim light mode logic here
+        await toggleDimLight();
         break;
       case LightMode.sunset:
         // Handle sunset mode logic here
+        await toggleSunset();
         break;
     }
   }
@@ -103,6 +106,85 @@ class TorchNotifier extends Notifier<TorchModel> {
               'An error occurred while trying to enable the flashlight.',
         );
       }
+    }
+  }
+
+  Future<void> flashPattern(Duration duration) async {
+    if (!state.isFlashlightSupported) {
+      return;
+    }
+
+    await toggleFlashlight();
+
+    await Future.delayed(duration);
+
+    await toggleFlashlight();
+
+    await Future.delayed(const Duration(seconds: 3));
+  }
+
+  Future<void> handlesosLight() async {
+    if (!state.isFlashlightSupported) {
+      return;
+    }
+
+    // Example SOS pattern: 3 short flashes, 3 long flashes, 3 short flashes
+    for (int i = 0; i < 3; i++) {
+      await flashPattern(const Duration(milliseconds: 200)); // Short flash
+    }
+    for (int i = 0; i < 3; i++) {
+      await flashPattern(const Duration(milliseconds: 600)); // Long flash
+    }
+    for (int i = 0; i < 3; i++) {
+      await flashPattern(const Duration(milliseconds: 200)); // Short flash
+    }
+  }
+
+  Future<void> toggleSosLight() async {
+    if (!state.isFlashlightSupported) {
+      return;
+    }
+
+    if (state.lightMode != LightMode.sos) {
+      await TorchLight.disableTorch();
+      state = state.copyWith(flashLightState: FlashLightState.off);
+      return;
+    }
+
+    while (state.lightMode == LightMode.sos) {
+      await handlesosLight();
+    }
+  }
+
+  Future<void> toggleDimLight() async {
+    if (!state.isFlashlightSupported) {
+      return;
+    }
+
+    for (int i = 0; i < 3; i++) {
+      // Example dim light pattern: 3 short flashes
+      if (state.lightMode != LightMode.dimlight) {
+        await TorchLight.disableTorch();
+        state = state.copyWith(flashLightState: FlashLightState.off);
+        return;
+      }
+      flashPattern(const Duration(milliseconds: 200));
+    }
+  }
+
+  Future<void> toggleSunset() async {
+    if (!state.isFlashlightSupported) {
+      return;
+    }
+
+    for (int i = 0; i < 3; i++) {
+      // Example dim light pattern: 3 short flashes
+      if (state.lightMode != LightMode.sunset) {
+        await TorchLight.disableTorch();
+        state = state.copyWith(flashLightState: FlashLightState.off);
+        return;
+      }
+      flashPattern(const Duration(milliseconds: 600));
     }
   }
 

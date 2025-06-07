@@ -12,4 +12,6 @@ class AppConstants {
       'You can also change the Color Mode of the App by going to settings. The app supports multiple color modes like Base, Yellow, Blue, and Green.';
   static const String guideText3 =
       'The app also supports S.O.S signal, Dim Light, and Sunset modes. You can switch between these modes using the bottom tab bar.';
+
+  static const String appLogoWithSlogan = 'assets/logo/logo-with-slogan.png';
 }
