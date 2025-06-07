@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tourch_app/providers/torch_provider.dart';
+import 'package:tourch_app/utils/util_funcs.dart';
 
 class BottomTabBar extends ConsumerStatefulWidget {
   const BottomTabBar({super.key});
@@ -11,6 +13,7 @@ class BottomTabBar extends ConsumerStatefulWidget {
 class _BottomTabBarState extends ConsumerState<BottomTabBar> {
   @override
   Widget build(BuildContext context) {
+    final torch = ref.watch(torchProvider);
     return DefaultTabController(
       length: 4,
       initialIndex: 1,
@@ -20,12 +23,16 @@ class _BottomTabBarState extends ConsumerState<BottomTabBar> {
           children: [
             Expanded(
               child: TabBar(
+                physics: const BouncingScrollPhysics(),
+                enableFeedback: true,
+                splashFactory: InkSplash.splashFactory,
+                splashBorderRadius: BorderRadius.circular(100),
                 overlayColor: WidgetStateProperty.all(Colors.transparent),
                 labelColor: Colors.white,
                 unselectedLabelColor: Colors.grey.withOpacity(0.5),
                 tabAlignment: TabAlignment.center,
                 isScrollable: true,
-                indicatorColor: Colors.orangeAccent,
+                indicatorColor: handleItemColorByColorMode(torch.colorMode),
                 indicatorWeight: 2.0,
                 indicatorSize: TabBarIndicatorSize.tab,
                 labelStyle: const TextStyle(

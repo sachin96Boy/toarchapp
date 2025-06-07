@@ -31,6 +31,27 @@ class TorchNotifier extends Notifier<TorchModel> {
     }
   }
 
+  Future<void> handleFlashlightBasedOnLightMode() async {
+    if (!state.isFlashlightSupported) {
+      return;
+    }
+
+    switch (state.lightMode) {
+      case LightMode.sos:
+        // Handle SOS mode logic here
+        break;
+      case LightMode.flashlight:
+        await toggleFlashlight();
+        break;
+      case LightMode.dimlight:
+        // Handle dim light mode logic here
+        break;
+      case LightMode.sunset:
+        // Handle sunset mode logic here
+        break;
+    }
+  }
+
   Future<void> toggleFlashlight() async {
     if (!state.isFlashlightSupported) {
       return;
@@ -91,21 +112,6 @@ class TorchNotifier extends Notifier<TorchModel> {
     }
 
     state = state.copyWith(lightMode: mode);
-
-    switch (mode) {
-      case LightMode.sos:
-        // Implement SOS logic
-        break;
-      case LightMode.flashlight:
-        await toggleFlashlight();
-        break;
-      case LightMode.dimlight:
-        // Implement dim light logic
-        break;
-      case LightMode.sunset:
-        // Implement sunset logic
-        break;
-    }
   }
 
   Future<void> setColorMode(ColorMode mode) async {
