@@ -44,17 +44,24 @@ _Note: Please ensure your device has a flashlight hardware component._
 
 ## 🔒 License
 
-This project is **not open source** and is protected under the following license:
+This project is **open source** and is protected under the following license:
 
 ```
-Torch by Sachin96boy License
+📜 Custom Open Source License for TorchApp
+Copyright (c) 2025 Schin Supunthaka
 
-All rights reserved. This software and associated materials are the intellectual property of Sachin96boy.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, subject to the following conditions:
 
-You may not copy, modify, distribute, sublicense, or reverse engineer any part of this project without explicit written permission from the author.
+Attribution Requirement: Any modified versions of this Software must include clear and visible acknowledgment of the original author, Sachin supunthaka, in both the source code and any accompanying documentation or user interfaces.
 
-Unauthorized use is strictly prohibited and may result in legal consequences.
+Notification of Modifications: If you distribute a modified version of this Software, you must notify the original author by sending an email to sachinsupunthaka96@gmail.com, detailing the nature of the modifications and the distribution channels.
 
+License Inclusion: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+Warranty Disclaimer: THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+📘 License Notes
+This license is based on the MIT License with additional clauses to ensure proper acknowledgment and communication regarding modifications.
 Contact: sachin96boy.dev
 ```
 
