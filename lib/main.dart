@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:tourch_app/pages/get_started_screen.dart';
 import 'package:tourch_app/pages/home_screen.dart';
 import 'package:tourch_app/styles/app_theme.dart';
 
@@ -25,6 +26,7 @@ class MyApp extends ConsumerWidget {
           darkTheme: AppTheme.dark,
           themeMode: themeMode,
           home: HomeScreen(),
+          routes: {'/guide': (context) => const GetStartedScreen()},
           builder: (context, child) {
             return child!;
           },

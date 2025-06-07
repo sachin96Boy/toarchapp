@@ -33,6 +33,7 @@ class TopBar extends ConsumerWidget {
           ShadButton(
             backgroundColor: Colors.grey.shade800,
             decoration: ShadDecoration(shape: BoxShape.circle),
+            onPressed: () => Navigator.pushNamed(context, '/guide'),
             child: Stack(
               alignment: Alignment.center,
               children: [

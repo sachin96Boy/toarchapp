@@ -16,6 +16,8 @@ class _SettingDialogState extends ConsumerState<SettingDialog> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
+    final torch = ref.watch(torchProvider);
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: ShadDialog(
@@ -28,7 +30,7 @@ class _SettingDialogState extends ConsumerState<SettingDialog> {
             SizedBox(height: 16),
             ShadSelect<ColorMode>(
               placeholder: Text(
-                'Select Color Mode',
+                torch.colorMode.name,
                 style: textTheme.bodyMedium,
               ),
               selectedOptionBuilder:

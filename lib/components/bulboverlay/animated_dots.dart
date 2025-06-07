@@ -52,6 +52,7 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
           alignment: Alignment.center,
           children: [
             CustomPaint(
+              willChange: true,
               painter: DotsPainter(
                 animationValue: _animation.value,
                 dotCount: dotCount,
@@ -63,6 +64,7 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
               size: Size(200, 200),
             ),
             CustomPaint(
+              willChange: true,
               painter: DotsPainter(
                 animationValue: _animation.value,
                 dotCount: dotCount,
@@ -74,6 +76,15 @@ class _AnimatedDotsState extends ConsumerState<AnimatedDots>
               size: Size(300, 300),
             ),
             CustomPaint(
+              willChange: true,
+              foregroundPainter: DotsPainter(
+                animationValue: _animation.value,
+                dotCount: dotCount,
+                color:
+                    torch.flashLightState == FlashLightState.on
+                        ? handleItemColorByColorMode(torch.colorMode)
+                        : Colors.grey,
+              ),
               painter: DotsPainter(
                 animationValue: _animation.value,
                 dotCount: dotCount,

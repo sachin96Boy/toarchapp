@@ -37,7 +37,7 @@ class ShakeNoifier extends Notifier<ShakeModelData> {
       state.lastShakeTime ?? DateTime.fromMillisecondsSinceEpoch(0),
     );
 
-    if (state.isCooldownActive || timeSinceLastShake.inSeconds < 2) {
+    if (state.isCooldownActive || timeSinceLastShake.inSeconds < 1) {
       return; // Ignore shake if cooldown is active or not enough time has passed
     }
 
