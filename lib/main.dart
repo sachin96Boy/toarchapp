@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:tourch_app/db/db_helper.dart';
 import 'package:tourch_app/pages/get_started_screen.dart';
 import 'package:tourch_app/pages/home_screen.dart';
 import 'package:tourch_app/styles/app_theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize the database
+  await DbHelper.initDB();
+
   runApp(ProviderScope(child: const MyApp()));
 }
 
