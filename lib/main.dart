@@ -24,7 +24,7 @@ class MyApp extends ConsumerWidget {
     final themeMode = ref.watch(themeProvider);
 
     return ShadApp.custom(
-      appBuilder: (context, theme) {
+      appBuilder: (context) {
         return MaterialApp(
           title: 'Flashlight by Sachin',
           debugShowCheckedModeBanner: false,
